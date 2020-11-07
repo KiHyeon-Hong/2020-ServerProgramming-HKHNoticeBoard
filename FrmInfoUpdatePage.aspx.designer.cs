@@ -11,7 +11,7 @@ namespace HKHNoticeBoard
 {
 
 
-    public partial class FrmMyPage
+    public partial class FrmInfoUpdatePage
     {
 
         /// <summary>
@@ -60,15 +60,6 @@ namespace HKHNoticeBoard
         protected global::System.Web.UI.WebControls.Label signInState;
 
         /// <summary>
-        /// userProfile 컨트롤입니다.
-        /// </summary>
-        /// <remarks>
-        /// 자동 생성 필드입니다.
-        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image userProfile;
-
-        /// <summary>
         /// myId 컨트롤입니다.
         /// </summary>
         /// <remarks>
@@ -78,13 +69,13 @@ namespace HKHNoticeBoard
         protected global::System.Web.UI.WebControls.Label myId;
 
         /// <summary>
-        /// id 컨트롤입니다.
+        /// id2 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label id;
+        protected global::System.Web.UI.WebControls.Label id2;
 
         /// <summary>
         /// myPwd 컨트롤입니다.
@@ -102,7 +93,25 @@ namespace HKHNoticeBoard
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pwd;
+        protected global::System.Web.UI.WebControls.TextBox pwd;
+
+        /// <summary>
+        /// myRPwd 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label myRPwd;
+
+        /// <summary>
+        /// rPwd 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox rPwd;
 
         /// <summary>
         /// myUserName 컨트롤입니다.
@@ -120,7 +129,7 @@ namespace HKHNoticeBoard
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userName;
+        protected global::System.Web.UI.WebControls.TextBox userName;
 
         /// <summary>
         /// myBirth 컨트롤입니다.
@@ -132,13 +141,58 @@ namespace HKHNoticeBoard
         protected global::System.Web.UI.WebControls.Label myBirth;
 
         /// <summary>
-        /// birth 컨트롤입니다.
+        /// birthYear 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label birth;
+        protected global::System.Web.UI.WebControls.DropDownList birthYear;
+
+        /// <summary>
+        /// myYear 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label myYear;
+
+        /// <summary>
+        /// birthMon 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList birthMon;
+
+        /// <summary>
+        /// myMon 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label myMon;
+
+        /// <summary>
+        /// birthDay 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList birthDay;
+
+        /// <summary>
+        /// myDay 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label myDay;
 
         /// <summary>
         /// myPhoneNum 컨트롤입니다.
@@ -156,7 +210,7 @@ namespace HKHNoticeBoard
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label phoneNum;
+        protected global::System.Web.UI.WebControls.TextBox phoneNum;
 
         /// <summary>
         /// myEmail 컨트롤입니다.
@@ -168,13 +222,13 @@ namespace HKHNoticeBoard
         protected global::System.Web.UI.WebControls.Label myEmail;
 
         /// <summary>
-        /// email 컨트롤입니다.
+        /// userEmail 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label email;
+        protected global::System.Web.UI.WebControls.TextBox userEmail;
 
         /// <summary>
         /// myAlarm 컨트롤입니다.
@@ -192,7 +246,25 @@ namespace HKHNoticeBoard
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label alarm;
+        protected global::System.Web.UI.WebControls.RadioButtonList alarm;
+
+        /// <summary>
+        /// myUserProfile 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label myUserProfile;
+
+        /// <summary>
+        /// userProfile 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload userProfile;
 
         /// <summary>
         /// infoUpdate 컨트롤입니다.
@@ -202,6 +274,15 @@ namespace HKHNoticeBoard
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button infoUpdate;
+
+        /// <summary>
+        /// cancel 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancel;
 
         /// <summary>
         /// Image3 컨트롤입니다.

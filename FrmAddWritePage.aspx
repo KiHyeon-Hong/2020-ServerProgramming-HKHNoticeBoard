@@ -21,6 +21,27 @@
             }
         }
 
+        function writeCheck() {
+            let titleCheck = document.getElementById("title");
+            let bodyCheck = document.getElementById("body");
+            let emailAttCheck = document.getElementById("emailAtt");
+
+            if (titleCheck.value == "") {
+                alert("제목을 입력해주세요");
+                return false;
+            }
+            else if (bodyCheck.value == "") {
+                alert("내용을 입력해주세요");
+                return false;
+            }
+            else if (emailAttCheck.value == "") {
+                alert("이미지를 첨부해주세요");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
     </script>
 </head>
 <body>
@@ -35,7 +56,7 @@
                 <a href="FrmMainPage.aspx?category=3">FAQ</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
             <asp:Image ID="Image1" runat="server" ImageUrl="~/userProfiles/default.jpg"  style="top: 4%; right: 12%; position: absolute" Height="25px" Width="25px" />
-            <a href="#" style="top: 4%; right: 7%; position: absolute">
+            <a href="FrmMyPage.aspx" style="top: 4%; right: 7%; position: absolute">
                 <asp:Label ID="myPage" runat="server" Text="Label" Visible="false">마이페이지</asp:Label>
             </a>
             <a href="FrmSignInPage.aspx" style="top: 4%; right: 3%; position: absolute">
@@ -95,7 +116,7 @@
 
                     </td>
                     <td style="text-align: right" class="auto-style1">
-                        <asp:Button ID="addWrite" runat="server" Text="저장" CssClass="btn" OnClick="addWrite_Click" />
+                        <asp:Button ID="addWrite" runat="server" Text="저장" CssClass="btn" OnClientClick="return writeCheck()" OnClick="addWrite_Click" />
                     </td>
                 </tr>
             </table>

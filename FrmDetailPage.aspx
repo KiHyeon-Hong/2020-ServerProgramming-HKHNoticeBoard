@@ -23,6 +23,15 @@
         function deleteCheck() {
             return confirm("정말로 삭제하시겠습니까?");
         }
+
+        function commentCheck() {
+            let commentCheck = document.getElementById("comment");
+
+            if (commentCheck.value == "") {
+                alert("코멘트를 입력해주세요");
+                return false;
+            }
+        }
     </script>
 </head>
 <body>
@@ -37,7 +46,7 @@
                 <a href="FrmMainPage.aspx?category=3">FAQ</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
             <asp:Image ID="Image1" runat="server" ImageUrl="~/userProfiles/default.jpg"  style="top: 4%; right: 12%; position: absolute" Height="25px" Width="25px" />
-            <a href="#" style="top: 4%; right: 7%; position: absolute">
+            <a href="FrmMyPage.aspx" style="top: 4%; right: 7%; position: absolute">
                 <asp:Label ID="myPage" runat="server" Text="Label" Visible="false">마이페이지</asp:Label>
             </a>
             <a href="FrmSignInPage.aspx" style="top: 4%; right: 3%; position: absolute">
@@ -129,7 +138,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="comment" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:Button ID="addComment" runat="server" Text="작성" OnClientClick="return myCheck()" OnClick="addComment_Click" />
+                        <asp:Button ID="addComment" runat="server" Text="작성" OnClientClick="return commentCheck()" OnClick="addComment_Click" />
                     </td>
                 </tr>
                 <asp:Label ID="commentList" runat="server" Text=""></asp:Label>

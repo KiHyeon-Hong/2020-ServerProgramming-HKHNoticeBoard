@@ -14,6 +14,7 @@ namespace HKHNoticeBoard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            int myViewCount = 0;
 
             string writeId = Request.QueryString["wid"].ToString();
 
@@ -42,15 +43,19 @@ namespace HKHNoticeBoard
 
 
                 userName.Text = $"{item["userName"].ToString()}";
-                createDay.Text = $"{item["createDay"].ToString()}";
-                updateDay.Text = $"{item["updateDay"].ToString()}";
+                createDay.Text = $"{item["createDay"].ToString().Split(' ')[0]}";
+                updateDay.Text = $"{item["updateDay"].ToString().Split(' ')[0]}";
                 title.Text = $"{item["title"].ToString()}";
                 body.Text = $"{item["body"].ToString()}";
 
                 //viewCountControl($"{item["viewCount"].ToString()}");
-
-                viewCount.Text = viewCountControl(int.Parse($"{item["viewCount"].ToString()}")); ;
+                myViewCount = int.Parse($"{item["viewCount"].ToString()}");
                 emailAtts.ImageUrl = "~/files/" + $"{item["emailAtt"].ToString()}";
+            }
+
+            if (!IsPostBack)
+            {
+                viewCount.Text = viewCountControl(myViewCount);
             }
 
             conn.Close();

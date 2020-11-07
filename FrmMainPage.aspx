@@ -46,7 +46,15 @@
             <hr />
         </header>
         <main>
-            <asp:Button ID="addWrite" runat="server" Text="글쓰기" type="button" CssClass="btn btn-primary" OnClientClick="return myCheck()" OnClick="addWrite_Click" />
+
+            <table style="width: 70%; margin-left: auto; margin-right: auto;"  class="">
+                <tr>
+                    <td style="text-align: right">
+                        <asp:Button ID="addWrite" runat="server" Text="글쓰기" type="button" CssClass="btn btn-primary" OnClientClick="return myCheck()" OnClick="addWrite_Click" />
+                    </td>
+                </tr>
+            </table>
+            <br />
 
             <asp:Label ID="board" runat="server" Text=""></asp:Label>
             <hr />

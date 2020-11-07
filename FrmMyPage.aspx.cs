@@ -14,8 +14,17 @@ namespace HKHNoticeBoard
             Member mem = (Member)Session["user"];
 
             userProfile.ImageUrl = "~/userProfiles/" + mem.getUserProfile();
+            id.Text = mem.getId();
+            pwd.Text = mem.getPwd();
+            userName.Text = mem.getUserName();
+            birth.Text = mem.getBirthYear() + "년 " + mem.getBirthMon() + "월 " + mem.getBirthDay() + "일";
+            phoneNum.Text = mem.getPhoneNum();
+            email.Text = mem.getUserEmail();
 
-
+            if (mem.getAlarm() == 0)
+                alarm.Text = "알람 받지 않음";
+            else
+                alarm.Text = "알람 받음";
 
             defaultSetting();
         }
@@ -30,6 +39,11 @@ namespace HKHNoticeBoard
                 signInState.Text = "로그아웃";
                 myPage.Visible = true;
             }
+        }
+
+        protected void infoUpdate_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/FrmInfoUpdatePage.aspx");
         }
     }
 }
