@@ -32,6 +32,8 @@ namespace HKHNoticeBoard
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(ds, "member");
 
+            int check = 0;
+
             foreach (DataRow item in ds.Tables["member"].Rows)
             {
                 if ((item["id"].ToString() == id.Text) && (item["pwd"].ToString() == pwd.Text))
@@ -39,13 +41,19 @@ namespace HKHNoticeBoard
                     Member mem = new Member(int.Parse(item["userId"].ToString()), item["id"].ToString(), item["pwd"].ToString(), item["userName"].ToString(), item["userEmail"].ToString(), int.Parse(item["birthYear"].ToString()), int.Parse(item["birthMon"].ToString()), int.Parse(item["birthDay"].ToString()), item["phoneNum"].ToString(), int.Parse(item["alarm"].ToString()), item["userProfile"].ToString());
 
                     Session["user"] = mem;
-
+                    conn.Close();
                     Response.Redirect("~/FrmMainPage.aspx");
                 }
                 else if ((item["id"].ToString() == id.Text) && (item["pwd"].ToString() != pwd.Text))
                 {
-                    Response.Write("비번 틀림");
+                    resultMessage.Text = "<font color='red'>비밀번호 틀림</font>";
+                    check = 1;
                 }
+            }
+
+            if(check == 0)
+            {
+                resultMessage.Text = "<font color='red'>정보가 없습니다.</font>";
             }
 
             conn.Close();

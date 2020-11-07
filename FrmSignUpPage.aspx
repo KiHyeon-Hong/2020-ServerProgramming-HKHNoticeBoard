@@ -21,6 +21,65 @@
             }
         }
 
+        function idCheck() {
+            let idCheck = document.getElementById("id");
+            if (idCheck.value == "") {
+                alert("ID를 입력해주세요");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+
+        function signUpCheck() {
+            let idCheck = document.getElementById("id");
+            let checkResult = document.getElementById("checkResult");
+            let pwdCheck = document.getElementById("pwd");
+            let rPwdCheck = document.getElementById("rPwd");
+            let userNameCheck = document.getElementById("userName");
+            let phoneNumCheck = document.getElementById("phoneNum");
+            let userEmailCheck = document.getElementById("userEmail");
+            let myAlarmCheck = document.getElementById("myAlarm");
+            let userProfileCheck = document.getElementById("userProfile");
+
+            if (idCheck.value == "") {
+                alert("ID를 입력해주세요");
+                return false;
+            }
+            else if (checkResult.innerHTML != "ID가 중복되지 않습니다") {
+                alert("ID 중복 확인 체크해주세요");
+                return false;
+            }
+            else if (pwdCheck.value == "") {
+                alert("비밀번호를 입력해주세요");
+                return false;
+            }
+            else if (pwdCheck.value != rPwdCheck.value) {
+                alert("비밀번호가 일치하지 않습니다");
+                return false;
+            }
+            else if (userNameCheck.value == "") {
+                alert("이름을 입력해주세요");
+                return false;
+            }
+            else if (phoneNumCheck.value == "") {
+                alert("폰 번호를 입력해주세요");
+                return false;
+            }
+            else if (userEmailCheck.value == "") {
+                alert("이메일을 입력해주세요");
+                return false;
+            }
+            else if (userProfileCheck.value == "") {
+                alert("프로필을 선택해주세요");
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
     </script>
     <style type="text/css">
         .auto-style1 {
@@ -44,7 +103,7 @@
             </span>
             <asp:Image ID="Image1" runat="server" ImageUrl="~/userProfiles/default.jpg"  style="top: 4%; right: 12%; position: absolute" Height="25px" Width="25px" />
             <a href="#" style="top: 4%; right: 7%; position: absolute">
-                <asp:Label ID="myPage" runat="server" Text="Label">마이페이지</asp:Label>
+                <asp:Label ID="myPage" runat="server" Text="Label" Visible="false">마이페이지</asp:Label>
             </a>
             <a href="FrmSignInPage.aspx" style="top: 4%; right: 3%; position: absolute">
                 <asp:Label ID="signInState" runat="server" Text="Label">로그인</asp:Label>
@@ -61,7 +120,7 @@
                     </td>
                     <td class="auto-style1">
                         <asp:TextBox ID="id" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:Button ID="check" runat="server" Text="중복체크" CssClass="btn" />
+                        <asp:Button ID="check" runat="server" Text="중복체크" CssClass="btn" OnClientClick="return idCheck()" OnClick="check_Click" />
                     </td>
                     <td>
                         <asp:Label ID="checkResult" runat="server" Text=""></asp:Label>
@@ -144,7 +203,7 @@
 
                     </td>
                     <td style="text-align: right" class="auto-style1">
-                        <asp:Button ID="signUp" runat="server" Text="회원가입" CssClass="btn" OnClick="signUp_Click" />
+                        <asp:Button ID="signUp" runat="server" Text="회원가입" CssClass="btn" OnClientClick="return signUpCheck()" OnClick="signUp_Click" />
                         <asp:Button ID="cancel" runat="server" Text="취소" PostBackUrl="~/FrmSignInPage.aspx" CssClass="btn" />
                     </td>
                 </tr>

@@ -20,7 +20,9 @@
                 return false;
             }
         }
-
+        function deleteCheck() {
+            return confirm("정말로 삭제하시겠습니까?");
+        }
     </script>
 </head>
 <body>
@@ -36,7 +38,7 @@
             </span>
             <asp:Image ID="Image1" runat="server" ImageUrl="~/userProfiles/default.jpg"  style="top: 4%; right: 12%; position: absolute" Height="25px" Width="25px" />
             <a href="#" style="top: 4%; right: 7%; position: absolute">
-                <asp:Label ID="myPage" runat="server" Text="Label">마이페이지</asp:Label>
+                <asp:Label ID="myPage" runat="server" Text="Label" Visible="false">마이페이지</asp:Label>
             </a>
             <a href="FrmSignInPage.aspx" style="top: 4%; right: 3%; position: absolute">
                 <asp:Label ID="signInState" runat="server" Text="Label">로그인</asp:Label>
@@ -109,7 +111,7 @@
                     </td>
                     <td style="text-align: right" class="auto-style1">
                         <asp:Button ID="updateWrite" runat="server" Text="수정" CssClass="btn" OnClientClick="return myCheck()" OnClick="updateWrite_Click" />
-                        <asp:Button ID="deleteWrite" runat="server" Text="삭제" CssClass="btn" OnClientClick="return myCheck()" OnClick="deleteWrite_Click" />
+                        <asp:Button ID="deleteWrite" runat="server" Text="삭제" CssClass="btn" OnClientClick="return deleteCheck()" OnClick="deleteWrite_Click" />
                         <asp:Button ID="boardList" runat="server" Text="글목록" CssClass="btn" PostBackUrl="~/FrmMainPage.aspx" />
                     </td>
                 </tr>

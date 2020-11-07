@@ -26,6 +26,7 @@ namespace HKHNoticeBoard
 
                 Image1.ImageUrl = "~/userProfiles/" + mem.getUserProfile();
                 signInState.Text = "로그아웃";
+                myPage.Visible = true;
             }
         }
 

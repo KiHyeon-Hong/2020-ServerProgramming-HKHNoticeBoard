@@ -37,8 +37,8 @@
                 <a href="FrmMainPage.aspx?category=3">FAQ</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
             <asp:Image ID="Image1" runat="server" ImageUrl="~/userProfiles/default.jpg"  style="top: 4%; right: 12%; position: absolute" Height="25px" Width="25px" />
-            <a href="#" style="top: 4%; right: 7%; position: absolute">
-                <asp:Label ID="myPage" runat="server" Text="Label">마이페이지</asp:Label>
+            <a href="FrmMyPage.aspx" style="top: 4%; right: 7%; position: absolute">
+                <asp:Label ID="myPage" runat="server" Text="Label" Visible="false">마이페이지</asp:Label>
             </a>
             <a href="FrmSignInPage.aspx" style="top: 4%; right: 3%; position: absolute">
                 <asp:Label ID="signInState" runat="server" Text="Label">로그인</asp:Label>
@@ -53,21 +53,7 @@
                 
                 <nav style="text-align: center">
                     <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
+                        <asp:Label ID="myPaginnation" runat="server" Text=""></asp:Label>
                     </ul>
                 </nav>
 

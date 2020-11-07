@@ -25,16 +25,6 @@ create table Write (
 	foreign key(userId) references Member(userId)
 );
 
-create table Comment (
-	commentId int identity(1,1) primary key,
-	writeId int not null,
-	userId int not null,
-	body nvarchar(256) not null,
-	parentCommentId int,
-	foreign key(writeId) references Write(writeId),
-	foreign key(userId) references Member(userId),
-	foreign key(commentId) references Comment(commentId)
-);
 
 create table Comment (
 	commentId int identity(1,1) primary key,

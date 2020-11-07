@@ -36,7 +36,7 @@
             </span>
             <asp:Image ID="Image1" runat="server" ImageUrl="~/userProfiles/default.jpg"  style="top: 4%; right: 12%; position: absolute" Height="25px" Width="25px" />
             <a href="#" style="top: 4%; right: 7%; position: absolute">
-                <asp:Label ID="myPage" runat="server" Text="Label">마이페이지</asp:Label>
+                <asp:Label ID="myPage" runat="server" Text="Label" Visible="false">마이페이지</asp:Label>
             </a>
             <a href="FrmSignInPage.aspx" style="top: 4%; right: 3%; position: absolute">
                 <asp:Label ID="signInState" runat="server" Text="Label">로그인</asp:Label>

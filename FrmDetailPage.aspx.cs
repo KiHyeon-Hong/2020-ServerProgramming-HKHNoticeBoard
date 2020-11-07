@@ -33,6 +33,14 @@ namespace HKHNoticeBoard
 
             foreach (DataRow item in ds.Tables["Board"].Rows)
             {
+                
+                if (((Member)Session["user"] == null) || ($"{item["userName"].ToString()}" != ((Member)Session["user"]).getUserName()))
+                {
+                    updateWrite.Visible = false;
+                    deleteWrite.Visible = false;
+                }
+
+
                 userName.Text = $"{item["userName"].ToString()}";
                 createDay.Text = $"{item["createDay"].ToString()}";
                 updateDay.Text = $"{item["updateDay"].ToString()}";
@@ -125,6 +133,7 @@ namespace HKHNoticeBoard
 
                 Image1.ImageUrl = "~/userProfiles/" + mem.getUserProfile();
                 signInState.Text = "로그아웃";
+                myPage.Visible = true;
             }
         }
 
@@ -136,6 +145,30 @@ namespace HKHNoticeBoard
 
         protected void deleteWrite_Click(object sender, EventArgs e)
         {
+            string writeId = Request.QueryString["wid"].ToString();
+
+            SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            conn.Open();
+
+            string deleteSql = "delete from Comment where writeId=@writeId";
+            SqlCommand cmd = new SqlCommand(deleteSql, conn);
+
+            cmd.Parameters.AddWithValue("@writeId", writeId);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
+
+
+            conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+            conn.Open();
+
+            deleteSql = "delete from Write where writeId=@writeId";
+            cmd = new SqlCommand(deleteSql, conn);
+
+            cmd.Parameters.AddWithValue("@writeId", writeId);
+
+            cmd.ExecuteNonQuery();
+            conn.Close();
 
             Response.Redirect("~/FrmMainPage.aspx");
         }
