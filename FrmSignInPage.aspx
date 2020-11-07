@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FrmMainPage.aspx.cs" Inherits="HKHNoticeBoard.FrmMainPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FrmSignInPage.aspx.cs" Inherits="HKHNoticeBoard.FrmSignInPage" %>
 
 <!DOCTYPE html>
 
@@ -6,8 +6,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
@@ -32,30 +31,37 @@
             <hr />
         </header>
         <main>
-            <asp:Button ID="addWrite" runat="server" Text="글쓰기" type="button" CssClass="btn btn-primary" OnClick="addWrite_Click" />
 
-            <asp:Label ID="board" runat="server" Text=""></asp:Label>
-            <hr />
-                
-                <nav style="text-align: center">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+            <div>
+                <table style="width: 30%; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom:auto;">
+                    <tr>
+                        <td>
+                            <asp:Label ID="lblId" runat="server" Text="ID : "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="id" runat="server" CssClass="form-control"></asp:TextBox>
+                        </td>
+                        <td rowspan="2">
+                            &nbsp;<asp:Button ID="signIn" runat="server" Text="Sign In" CssClass="btn btn-default btn-lg btn-info" OnClick="signIn_Click" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="lblPwd" runat="server" Text="PWD : "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="pwd" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">
+                            <asp:LinkButton ID="signUp" runat="server" PostBackUrl="~/FrmSignUpPage.aspx">Sign Up</asp:LinkButton>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <asp:LinkButton ID="findIdPwd" runat="server">Find Id / PWD</asp:LinkButton>
+                        </td>
+                    </tr>
+                </table>
+            </div>
 
         </main>
         <footer style="background-color: #CCCCCC; float:left; width:100%; bottom: 0%; position: absolute">

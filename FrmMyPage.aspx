@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FrmMainPage.aspx.cs" Inherits="HKHNoticeBoard.FrmMainPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FrmMyPage.aspx.cs" Inherits="HKHNoticeBoard.FrmMyPage" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,6 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -32,30 +31,9 @@
             <hr />
         </header>
         <main>
-            <asp:Button ID="addWrite" runat="server" Text="글쓰기" type="button" CssClass="btn btn-primary" OnClick="addWrite_Click" />
 
-            <asp:Label ID="board" runat="server" Text=""></asp:Label>
-            <hr />
-                
-                <nav style="text-align: center">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+
+
 
         </main>
         <footer style="background-color: #CCCCCC; float:left; width:100%; bottom: 0%; position: absolute">

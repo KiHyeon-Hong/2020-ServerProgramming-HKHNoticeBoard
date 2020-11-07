@@ -35,6 +35,15 @@ create table Comment (
 	foreign key(commentId) references Comment(commentId)
 );
 
+create table Comment (
+	commentId int identity(1,1) primary key,
+	writeId int not null,
+	userId int not null,
+	body nvarchar(256) not null,
+	foreign key(writeId) references Write(writeId),
+	foreign key(userId) references Member(userId)
+);
+
 select * from Member;
 select * from Write;
 select * from Comment;
@@ -44,3 +53,5 @@ drop table Write;
 drop table Comment;
 
 select * from Member, Write where Member.userId = Write.userId;
+
+update Member set userProfile='yjs03075.jpg';

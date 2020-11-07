@@ -11,7 +11,7 @@ namespace HKHNoticeBoard
 {
 
 
-    public partial class FrmMainPage
+    public partial class FrmSignInPage
     {
 
         /// <summary>
@@ -60,22 +60,67 @@ namespace HKHNoticeBoard
         protected global::System.Web.UI.WebControls.Label signInState;
 
         /// <summary>
-        /// addWrite 컨트롤입니다.
+        /// lblId 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addWrite;
+        protected global::System.Web.UI.WebControls.Label lblId;
 
         /// <summary>
-        /// board 컨트롤입니다.
+        /// id 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label board;
+        protected global::System.Web.UI.WebControls.TextBox id;
+
+        /// <summary>
+        /// signIn 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button signIn;
+
+        /// <summary>
+        /// lblPwd 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPwd;
+
+        /// <summary>
+        /// pwd 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox pwd;
+
+        /// <summary>
+        /// signUp 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton signUp;
+
+        /// <summary>
+        /// findIdPwd 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton findIdPwd;
 
         /// <summary>
         /// Image3 컨트롤입니다.

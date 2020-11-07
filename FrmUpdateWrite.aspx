@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FrmMainPage.aspx.cs" Inherits="HKHNoticeBoard.FrmMainPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FrmUpdateWrite.aspx.cs" Inherits="HKHNoticeBoard.FrmUpdateWrite" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,6 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
@@ -32,30 +31,63 @@
             <hr />
         </header>
         <main>
-            <asp:Button ID="addWrite" runat="server" Text="글쓰기" type="button" CssClass="btn btn-primary" OnClick="addWrite_Click" />
 
-            <asp:Label ID="board" runat="server" Text=""></asp:Label>
-            <hr />
-                
-                <nav style="text-align: center">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
+            <table style="width: 50%; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom:auto;">
+                <tr>
+                    <td>
+                        <asp:Label ID="myUserName" runat="server" Text="작성자 : "></asp:Label>
+                    </td>
+                    <td>
+                        <asp:Label ID="userName" runat="server" Text=""></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="myCategory" runat="server" Text="카테고리 : "></asp:Label>
+                    </td>
+                    <td>
+                        <asp:DropDownList ID="category" runat="server">
+                            <asp:ListItem Value="1">공지사항</asp:ListItem>
+                            <asp:ListItem Value="2">Q&A</asp:ListItem>
+                            <asp:ListItem Value="3">FAQ</asp:ListItem>
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="myTitle" runat="server" Text="제목 : "></asp:Label>
+                    </td>
+                    <td class="auto-style1">
+                        <asp:TextBox ID="title" runat="server" Width="650px"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="myBody" runat="server" Text="내용 : "></asp:Label>
+                    </td>
+                    <td class="auto-style1">
+                        <asp:TextBox ID="body" runat="server" TextMode="MultiLine" Height="300px" Width="650px"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:Label ID="myEmailAtt" runat="server" Text="첨부파일 : "></asp:Label>
+                    </td>
+                    <td class="auto-style1">
+                       <asp:FileUpload ID="emailAtt" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+
+                    </td>
+                    <td style="text-align: right" class="auto-style1">
+                        <asp:Button ID="updateWrite" runat="server" Text="수정" CssClass="btn" OnClick="updateWrite_Click" />
+                        <asp:Button ID="boardList" runat="server" Text="취소" CssClass="btn" OnClick="boardList_Click" />
+                    </td>
+                </tr>
+            </table>
+
 
         </main>
         <footer style="background-color: #CCCCCC; float:left; width:100%; bottom: 0%; position: absolute">
