@@ -12,6 +12,18 @@ namespace HKHNoticeBoard
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            defaultSetting();
+        }
+
+        private void defaultSetting()
+        {
+            if (Session["user"] != null)
+            {
+                Member mem = (Member)Session["user"];
+
+                Image1.ImageUrl = "~/userProfiles/" + mem.getUserProfile();
+                signInState.Text = "로그아웃";
+            }
         }
     }
 }

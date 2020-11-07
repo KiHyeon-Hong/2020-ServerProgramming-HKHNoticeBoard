@@ -34,7 +34,7 @@ namespace HKHNoticeBoard
             Member mem = (Member)Session["user"];
             int userId = mem.getUserId();
 
-            Write write = new Write(0, int.Parse(category.SelectedValue), title.Text, body.Text, DateTime.Now, DateTime.Now, emailAtt.FileName, mem.getUserId());
+            Write write = new Write(0, int.Parse(category.SelectedValue), title.Text, body.Text, DateTime.Now, DateTime.Now, emailAtt.FileName, mem.getUserId(), 0);
 
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             conn.Open();

@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        function myCheck() {
+            let myState = document.getElementById("signInState");
+            if (myState.innerHTML == "로그아웃")
+                return true;
+            else {
+                let result = alert("로그인을 해주세요");
+                return false;
+            }
+        }
+
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -59,6 +72,14 @@
                 </tr>
                 <tr>
                     <td>
+                        <asp:Label ID="myViewCount" runat="server" Text="조회수 : "></asp:Label>
+                    </td>
+                    <td class="auto-style1">
+                        <asp:Label ID="viewCount" runat="server" Text=""></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <asp:Label ID="myTitle" runat="server" Text="제목 : "></asp:Label>
                     </td>
                     <td class="auto-style1">
@@ -87,8 +108,8 @@
                         
                     </td>
                     <td style="text-align: right" class="auto-style1">
-                        <asp:Button ID="updateWrite" runat="server" Text="수정" CssClass="btn" OnClick="updateWrite_Click" />
-                        <asp:Button ID="deleteWrite" runat="server" Text="삭제" CssClass="btn" OnClick="deleteWrite_Click" />
+                        <asp:Button ID="updateWrite" runat="server" Text="수정" CssClass="btn" OnClientClick="return myCheck()" OnClick="updateWrite_Click" />
+                        <asp:Button ID="deleteWrite" runat="server" Text="삭제" CssClass="btn" OnClientClick="return myCheck()" OnClick="deleteWrite_Click" />
                         <asp:Button ID="boardList" runat="server" Text="글목록" CssClass="btn" PostBackUrl="~/FrmMainPage.aspx" />
                     </td>
                 </tr>
@@ -106,7 +127,7 @@
                     </td>
                     <td>
                         <asp:TextBox ID="comment" runat="server" CssClass="form-control"></asp:TextBox>
-                        <asp:Button ID="addComment" runat="server" Text="작성" OnClick="addComment_Click" />
+                        <asp:Button ID="addComment" runat="server" Text="작성" OnClientClick="return myCheck()" OnClick="addComment_Click" />
                     </td>
                 </tr>
                 <asp:Label ID="commentList" runat="server" Text=""></asp:Label>

@@ -3,7 +3,7 @@
 	id nvarchar(20) not null,
 	pwd nvarchar(20) not null,
 	userName nvarchar(20) not null,
-	userEmail nvarchar(20) not null,
+	userEmail nvarchar(50) not null,
 	birthYear int not null,
 	birthMon int not null,
 	birthDay int not null,
@@ -21,6 +21,7 @@ create table Write (
 	updateDay date,
 	emailAtt nvarchar(20),
 	userId int not null,
+	viewCount int not null default 0,
 	foreign key(userId) references Member(userId)
 );
 
@@ -55,3 +56,5 @@ drop table Comment;
 select * from Member, Write where Member.userId = Write.userId;
 
 update Member set userProfile='yjs03075.jpg';
+
+insert into Write(category, title, body, createDay, updateDay, emailAtt, userId) values(1, N'테스트용 공지사항입니다.', N'테스트용 공지사항입니다', sysdate(), sysdate(), N'우주.jpg', 1 );

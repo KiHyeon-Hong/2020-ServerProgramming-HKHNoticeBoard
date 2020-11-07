@@ -12,8 +12,9 @@ namespace HKHNoticeBoard
         private DateTime updateDay;
         private string emailAtt;
         private int userId;
+        private int viewCount;
 
-        public Write(int writeId, int category, string title, string body, DateTime createDay, DateTime updateDay, string emailAtt, int userId)
+        public Write(int writeId, int category, string title, string body, DateTime createDay, DateTime updateDay, string emailAtt, int userId, int viewCount)
         {
             this.writeId = writeId;
             this.category = category;
@@ -23,6 +24,7 @@ namespace HKHNoticeBoard
             this.updateDay = updateDay;
             this.emailAtt = emailAtt;
             this.userId = userId;
+            this.viewCount = viewCount;
         }
         public int getWriteId()
         {
@@ -87,6 +89,14 @@ namespace HKHNoticeBoard
         public void setUserId(int userId)
         {
             this.userId = userId;
+        }
+        public int getViewCount()
+        {
+            return viewCount;
+        }
+        public void setViewCount(int viewCount)
+        {
+            this.viewCount = viewCount;
         }
         public string printWrite()
         {

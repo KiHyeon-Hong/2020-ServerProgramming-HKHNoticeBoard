@@ -10,6 +10,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+        function myCheck() {
+            let myState = document.getElementById("signInState");
+            if (myState.innerHTML == "로그아웃")
+                return true;
+            else {
+                let result = alert("로그인을 해주세요");
+                return false;
+            }
+        }
+
+    </script>
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -32,7 +46,7 @@
             <hr />
         </header>
         <main>
-            <asp:Button ID="addWrite" runat="server" Text="글쓰기" type="button" CssClass="btn btn-primary" OnClick="addWrite_Click" />
+            <asp:Button ID="addWrite" runat="server" Text="글쓰기" type="button" CssClass="btn btn-primary" OnClientClick="return myCheck()" OnClick="addWrite_Click" />
 
             <asp:Label ID="board" runat="server" Text=""></asp:Label>
             <hr />

@@ -41,6 +41,18 @@ namespace HKHNoticeBoard
 
                 conn.Close();
             }
+            defaultSetting();
+        }
+
+        private void defaultSetting()
+        {
+            if (Session["user"] != null)
+            {
+                Member mem = (Member)Session["user"];
+
+                Image1.ImageUrl = "~/userProfiles/" + mem.getUserProfile();
+                signInState.Text = "로그아웃";
+            }
         }
 
         protected void updateWrite_Click(object sender, EventArgs e)
@@ -48,7 +60,7 @@ namespace HKHNoticeBoard
             Member mem = (Member)Session["user"];
             int userId = mem.getUserId();
 
-            Write write = new Write(int.Parse(Request.QueryString["wid"].ToString()), int.Parse(category.SelectedValue), title.Text, body.Text, DateTime.Now, DateTime.Now, emailAtt.FileName, mem.getUserId());
+            Write write = new Write(int.Parse(Request.QueryString["wid"].ToString()), int.Parse(category.SelectedValue), title.Text, body.Text, DateTime.Now, DateTime.Now, emailAtt.FileName, mem.getUserId(), 0);
 
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             conn.Open();
