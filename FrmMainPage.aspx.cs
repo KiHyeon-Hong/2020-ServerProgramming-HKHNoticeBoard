@@ -83,6 +83,9 @@ namespace HKHNoticeBoard
                 "<table border=\"1\" style=\"width: 70%; margin-left: auto; margin-right: auto; \"  class=\"table table-striped table-hover table-condensed table-bordered\">" +
                     "<tr style=\"text-align: center\" class=\"active\">" +
                         "<td>" +
+                            "<b>분류</b>" +
+                        "</td>" +
+                        "<td>" +
                             "<b>제목</b>" +
                         "</td>" +
                         "<td>" +
@@ -105,6 +108,9 @@ namespace HKHNoticeBoard
                 {
                     myBoard +=
                     $"<tr>" +
+                        $"<td style=\"text-align: center\">" +
+                            (($"{item["category"].ToString()}" == "1")? "[공지사항]": ($"{item["category"].ToString()}" == "2")? "[Q&A]": "[FAQ]") +
+                        $"</td>" +
                         $"<td>" +
                             //$"{item["title"].ToString()}" +
                             $"<a href='FrmDetailPage.aspx?wid={item["writeId"].ToString()}'>{item["title"].ToString()}</a>" +
