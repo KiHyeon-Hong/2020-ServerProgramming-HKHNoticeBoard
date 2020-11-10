@@ -26,9 +26,13 @@
 
         function commentCheck() {
             let commentCheck = document.getElementById("comment");
-
+            let myState = document.getElementById("signInState");
             if (commentCheck.value == "") {
                 alert("코멘트를 입력해주세요");
+                return false;
+            }
+            else if (myState.innerHTML == "로그인") {
+                alert("로그인을 해주세요");
                 return false;
             }
         }

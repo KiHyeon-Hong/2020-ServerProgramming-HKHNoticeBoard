@@ -107,6 +107,8 @@ namespace HKHNoticeBoard
 
             commentList.Text = myBoard;
             defaultSetting();
+
+            conn.Close();
         }
 
         private string viewCountControl(int myViewCount)

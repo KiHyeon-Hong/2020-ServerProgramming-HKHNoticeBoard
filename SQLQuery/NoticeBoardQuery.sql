@@ -48,3 +48,5 @@ select * from Member, Write where Member.userId = Write.userId;
 update Member set userProfile='yjs03075.jpg';
 
 insert into Write(category, title, body, createDay, updateDay, emailAtt, userId) values(1, N'테스트용 공지사항입니다.', N'테스트용 공지사항입니다', sysdate(), sysdate(), N'우주.jpg', 1 );
+
+select * from Member, Write where Member.userId = Write.userId order by writeId desc;

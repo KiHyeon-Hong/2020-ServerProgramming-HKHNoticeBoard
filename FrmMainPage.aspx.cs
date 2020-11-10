@@ -67,9 +67,9 @@ namespace HKHNoticeBoard
             string selectSql;
 
             if (cate == "0")
-                selectSql = "select * from Member, Write where Member.userId = Write.userId";
+                selectSql = "select * from Member, Write where Member.userId = Write.userId order by writeId desc";
             else
-                selectSql = "select * from Member, Write where Member.userId = Write.userId and category=" + cate;
+                selectSql = "select * from Member, Write where Member.userId = Write.userId and category=" + cate + "order by writeId desc";
 
             SqlCommand cmd = new SqlCommand(selectSql, conn);
 
@@ -136,6 +136,8 @@ namespace HKHNoticeBoard
             myBoard += "</table>";
 
             board.Text = myBoard;
+
+            conn.Close();
 
             return count;
         }
