@@ -16,6 +16,12 @@ namespace HKHNoticeBoard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Request.QueryString["wid"] == null)
+            {
+                Response.Redirect("~/FrmMainPage.aspx");
+            }
+            
+            
             int myViewCount = 0;
 
             string writeId = Request.QueryString["wid"].ToString();

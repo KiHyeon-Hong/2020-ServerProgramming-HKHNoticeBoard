@@ -49,13 +49,15 @@
                 <a href="FrmMainPage.aspx?category=2">Q&A</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="FrmMainPage.aspx?category=3">FAQ</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/userProfiles/default.jpg"  style="top: 4%; right: 12%; position: absolute" Height="25px" Width="25px" />
-            <a href="FrmMyPage.aspx" style="top: 4%; right: 7%; position: absolute">
-                <asp:Label ID="myPage" runat="server" Text="Label" Visible="false">마이페이지</asp:Label>
-            </a>
-            <a href="FrmSignInPage.aspx" style="top: 4%; right: 3%; position: absolute">
-                <asp:Label ID="signInState" runat="server" Text="Label">로그인</asp:Label>
-            </a>
+            <span style="top: 4%; right: 5%; position: absolute">
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/userProfiles/default.jpg" Height="25px" Width="25px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="FrmMyPage.aspx">
+                    <asp:Label ID="myPage" runat="server" Text="Label" Visible="false">마이페이지</asp:Label>
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="FrmSignInPage.aspx">
+                    <asp:Label ID="signInState" runat="server" Text="Label">로그인</asp:Label>
+                </a>
+            </span>
             <hr />
         </header>
         <main>
@@ -101,6 +103,7 @@
                         <asp:Label ID="title" runat="server" Width="650px"></asp:Label>
                     </td>
                 </tr>
+
                 <tr>
                     <td>
                         <asp:Label ID="myBody" runat="server" Text="내용 : "></asp:Label>

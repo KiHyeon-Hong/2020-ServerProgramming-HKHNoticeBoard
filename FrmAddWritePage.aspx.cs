@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -64,7 +65,23 @@ namespace HKHNoticeBoard
             string fileName = Server.MapPath("/files") + @"/" + emailAtt.FileName;
             emailAtt.SaveAs(fileName);
 
-            //sendMessage(mem.getPhoneNum());
+
+
+
+            conn.Open();
+            string selectSql = "select * from Member where alarm=1";
+            cmd = new SqlCommand(selectSql, conn);
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            da.Fill(ds, "Board");
+
+            //foreach (DataRow item in ds.Tables["Board"].Rows)
+                //if(int.Parse($"{item["alarm"].ToString()}") == 1)
+                    //sendMessage($"{item["phoneNum"].ToString()}");
+
+            conn.Close();
 
             Response.Redirect("~/FrmMainPage.aspx");
         }

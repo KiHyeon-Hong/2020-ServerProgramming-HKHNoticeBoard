@@ -36,19 +36,30 @@
                 <a href="FrmMainPage.aspx?category=2">Q&A</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="FrmMainPage.aspx?category=3">FAQ</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
-            <asp:Image ID="Image1" runat="server" ImageUrl="~/userProfiles/default.jpg"  style="top: 4%; right: 12%; position: absolute" Height="25px" Width="25px" />
-            <a href="FrmMyPage.aspx" style="top: 4%; right: 7%; position: absolute">
-                <asp:Label ID="myPage" runat="server" Text="Label" Visible="false">마이페이지</asp:Label>
-            </a>
-            <a href="FrmSignInPage.aspx" style="top: 4%; right: 3%; position: absolute">
-                <asp:Label ID="signInState" runat="server" Text="Label">로그인</asp:Label>
-            </a>
+            <span style="top: 4%; right: 5%; position: absolute">
+                <asp:Image ID="Image1" runat="server" ImageUrl="~/userProfiles/default.jpg" Height="25px" Width="25px" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="FrmMyPage.aspx">
+                    <asp:Label ID="myPage" runat="server" Text="Label" Visible="false">마이페이지</asp:Label>
+                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="FrmSignInPage.aspx">
+                    <asp:Label ID="signInState" runat="server" Text="Label">로그인</asp:Label>
+                </a>
+            </span>
             <hr />
         </header>
         <main>
 
             <table style="width: 70%; margin-left: auto; margin-right: auto;"  class="">
                 <tr>
+                    <td>
+                        <asp:DropDownList ID="searchCriteria" runat="server">
+                            <asp:ListItem Value="0">제목</asp:ListItem>
+                            <asp:ListItem Value="1">내용</asp:ListItem>
+                            <asp:ListItem Value="2">작성자</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:TextBox ID="searchText" runat="server"></asp:TextBox>
+                        <asp:Button ID="search" runat="server" Text="검색" CssClass="btn btn-primary" OnClick="search_Click" />
+                    </td>
                     <td style="text-align: right">
                         <asp:Button ID="addWrite" runat="server" Text="글쓰기" type="button" CssClass="btn btn-primary" OnClientClick="return myCheck()" OnClick="addWrite_Click" />
                     </td>
@@ -66,22 +77,6 @@
                 </nav>
 
         </main>
-        <footer style="background-color: #CCCCCC; float:left; width:100%; bottom: 0%; position: absolute">
-            <p style="text-align: center">안녕하세요</p>
-            <p style="text-align: center">이곳은 Footer 입니다</p>
-            <p style="text-align: center"></p>
-            <p style="text-align: center"><b>Tel. </b>+8210-6605-5379</p>
-            <p style="text-align: center"><b>E-mail. </b>ghdrlgus96@naver.com</p>
-
-            <br />
-            &nbsp;<asp:Image ID="Image3" runat="server" ImageUrl="~/PageImages/logo.png" Height="50px" Width="150px" />
-            <a href="https://github.com/KiHyeon-Hong" style="bottom: 10%; right: 3%; position: absolute">
-                <asp:Image ID="Image2" runat="server" ImageUrl="~/PageImages/git.jpg" Height="25px" Width="25px" />
-            </a>
-            <a href="https://www.youtube.com/" style="bottom: 10%; right: 7%; position: absolute">
-                <asp:Image ID="Image4" runat="server" ImageUrl="~/PageImages/youtube.jpg" Height="25px" Width="25px" />
-            </a>
-        </footer>
     </form>
 </body>
 </html>

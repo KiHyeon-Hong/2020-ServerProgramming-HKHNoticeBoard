@@ -17,6 +17,8 @@ namespace HKHNoticeBoard
         {
             string cate = Request.QueryString["category"];
             string page = Request.QueryString["page"];
+            string searchName = Request.QueryString["searchName"];
+            string searchValue = Request.QueryString["searchValue"];
 
             if (page == null)
                 page = "1";
@@ -29,7 +31,7 @@ namespace HKHNoticeBoard
                 cate = cate.ToString();
 
 
-            defaultPagination(cate, defaultWebSetting(cate, int.Parse(page), 10), 10);
+            defaultPagination(cate, defaultWebSetting(cate, int.Parse(page), 10, searchName, searchValue), 10);
             defaultSetting();
         }
 
@@ -56,7 +58,7 @@ namespace HKHNoticeBoard
                     "</li>";
         }
 
-        private int defaultWebSetting(string cate, int page, int onePage)
+        private int defaultWebSetting(string cate, int page, int onePage, string searchName, string searchValue)
         {
 
 
@@ -65,8 +67,16 @@ namespace HKHNoticeBoard
 
             //string selectSql = "select * from Member, Write where Member.userId = Write.userId";
             string selectSql;
-
-            if (cate == "0")
+            if (searchName != null)
+            {
+                if(searchName == "0")
+                    selectSql = "select * from Member, Write where Member.userId = Write.userId and title like N'%" + searchValue + "%' order by writeId desc";
+                else if (searchName == "1")
+                    selectSql = "select * from Member, Write where Member.userId = Write.userId and body like N'%" + searchValue + "%' order by writeId desc";
+                else
+                    selectSql = "select * from Member, Write where Member.userId = Write.userId and userName like N'%" + searchValue + "%' order by writeId desc";
+            }
+            else if (cate == "0")
                 selectSql = "select * from Member, Write where Member.userId = Write.userId order by writeId desc";
             else
                 selectSql = "select * from Member, Write where Member.userId = Write.userId and category=" + cate + "order by writeId desc";
@@ -158,6 +168,11 @@ namespace HKHNoticeBoard
         protected void addWrite_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/FrmAddWritePage.aspx");
+        }
+
+        protected void search_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/FrmMainPage.aspx?category=0&searchName=" + searchCriteria.SelectedValue + "&searchValue=" + searchText.Text);
         }
     }
 }

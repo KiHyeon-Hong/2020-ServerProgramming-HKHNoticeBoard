@@ -43,6 +43,8 @@ drop table Member;
 drop table Write;
 drop table Comment;
 
+
+
 select * from Member, Write where Member.userId = Write.userId;
 
 update Member set userProfile='yjs03075.jpg';
@@ -50,3 +52,18 @@ update Member set userProfile='yjs03075.jpg';
 insert into Write(category, title, body, createDay, updateDay, emailAtt, userId) values(1, N'테스트용 공지사항입니다.', N'테스트용 공지사항입니다', sysdate(), sysdate(), N'우주.jpg', 1 );
 
 select * from Member, Write where Member.userId = Write.userId order by writeId desc;
+
+update Member set phoneNum='+821066055379' where userId=2;
+update Member set phoneNum='+821066055379' where userId=3;
+update Member set phoneNum='+821066055379' where userId=4;
+update Member set phoneNum='+821066055379' where userId=5;
+update Member set phoneNum='+821066055379' where userId=6;
+update Member set phoneNum='+821066055379' where userId=7;
+update Member set phoneNum='+821066055379' where userId=1002;
+update Member set phoneNum='+821066055379' where userId=2;
+
+select * from Member where userName like '%user%';
+
+select * from Member, Write where Member.userId = Write.userId and title like '%테스트%' order by writeId desc;
+
+select * from Write where title like N'%테스트%';
