@@ -11,7 +11,7 @@ namespace HKHNoticeBoard
 {
 
 
-    public partial class FrmAddWritePage
+    public partial class FrmFindPage
     {
 
         /// <summary>
@@ -60,13 +60,31 @@ namespace HKHNoticeBoard
         protected global::System.Web.UI.WebControls.Label signInState;
 
         /// <summary>
-        /// myUserName 컨트롤입니다.
+        /// lblId 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label myUserName;
+        protected global::System.Web.UI.WebControls.Label lblId;
+
+        /// <summary>
+        /// lblPwd 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblPwd;
+
+        /// <summary>
+        /// idUserName 컨트롤입니다.
+        /// </summary>
+        /// <remarks>
+        /// 자동 생성 필드입니다.
+        /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label idUserName;
 
         /// <summary>
         /// userName 컨트롤입니다.
@@ -75,97 +93,97 @@ namespace HKHNoticeBoard
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userName;
+        protected global::System.Web.UI.WebControls.TextBox userName;
 
         /// <summary>
-        /// myCategory 컨트롤입니다.
+        /// findId 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label myCategory;
+        protected global::System.Web.UI.WebControls.Button findId;
 
         /// <summary>
-        /// category 컨트롤입니다.
+        /// pwdId 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList category;
+        protected global::System.Web.UI.WebControls.Label pwdId;
 
         /// <summary>
-        /// myTitle 컨트롤입니다.
+        /// id 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label myTitle;
+        protected global::System.Web.UI.WebControls.TextBox id;
 
         /// <summary>
-        /// title 컨트롤입니다.
+        /// findPwd 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox title;
+        protected global::System.Web.UI.WebControls.Button findPwd;
 
         /// <summary>
-        /// myBody 컨트롤입니다.
+        /// idEmail 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label myBody;
+        protected global::System.Web.UI.WebControls.Label idEmail;
 
         /// <summary>
-        /// body 컨트롤입니다.
+        /// userEmail 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox body;
+        protected global::System.Web.UI.WebControls.TextBox userEmail;
 
         /// <summary>
-        /// myEmailAtt 컨트롤입니다.
+        /// pwdPhoneNum 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label myEmailAtt;
+        protected global::System.Web.UI.WebControls.Label pwdPhoneNum;
 
         /// <summary>
-        /// emailAtt 컨트롤입니다.
+        /// phoneNum 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload emailAtt;
+        protected global::System.Web.UI.WebControls.TextBox phoneNum;
 
         /// <summary>
-        /// addWrite 컨트롤입니다.
+        /// idPwdResult 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button addWrite;
+        protected global::System.Web.UI.WebControls.Label idPwdResult;
 
         /// <summary>
-        /// cancelWrite 컨트롤입니다.
+        /// Button1 컨트롤입니다.
         /// </summary>
         /// <remarks>
         /// 자동 생성 필드입니다.
         /// 수정하려면 디자이너 파일에서 코드 숨김 파일로 필드 선언을 이동하세요.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button cancelWrite;
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
         /// Image3 컨트롤입니다.

@@ -42,6 +42,10 @@
                 return true;
             }
         }
+
+        function cancelCheck() {
+            return confirm("작성한 게시글은 저장되지 않습니다. 정말 나갈까요?");
+        }
     </script>
 </head>
 <body>
@@ -117,6 +121,7 @@
                     </td>
                     <td style="text-align: right" class="auto-style1">
                         <asp:Button ID="addWrite" runat="server" Text="저장" CssClass="btn" OnClientClick="return writeCheck()" OnClick="addWrite_Click" />
+                        <asp:Button ID="cancelWrite" runat="server" Text="취소" CssClass="btn" OnClientClick="return cancelCheck()" OnClick="cancelWrite_Click" />
                     </td>
                 </tr>
             </table>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FrmSignInPage.aspx.cs" Inherits="HKHNoticeBoard.FrmSignInPage" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FrmFindPage.aspx.cs" Inherits="HKHNoticeBoard.FrmFindPage" %>
 
 <!DOCTYPE html>
 
@@ -6,38 +6,9 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript">
-        function myCheck() {
-            let myState = document.getElementById("signInState");
-            if (myState.innerHTML == "로그아웃")
-                return true;
-            else {
-                let result = alert("로그인을 해주세요");
-                return false;
-            }
-        }
-
-        function loginCheck() {
-            let idCheck = document.getElementById("id");
-            let pwdCheck = document.getElementById("pwd");
-
-            if (idCheck.value == "") {
-                alert("ID를 입력해주세요");
-                return false;
-            }
-            else if (pwdCheck.value == "") {
-                alert("비밀번호를 입력해주세요");
-                return false;
-            }
-            else {
-                return true;
-            }
-        }
-    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -60,43 +31,77 @@
             <hr />
         </header>
         <main>
-
             <div>
-                <table style="width: 30%; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom:auto;">
-                    <tr>
-                        <td>
-                            <asp:Label ID="lblId" runat="server" Text="ID : "></asp:Label>
+                <table style="width: 40%; margin-left: auto; margin-right: auto; margin-top: auto; margin-bottom:auto;">
+                    <tr style="text-align: center">
+                        <td colspan="3">
+                            <asp:Label ID="lblId" runat="server" Text="ID 찾기"></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="id" runat="server" CssClass="form-control"></asp:TextBox>
+
                         </td>
-                        <td rowspan="2">
-                            &nbsp;<asp:Button ID="signIn" runat="server" Text="Sign In" CssClass="btn btn-default btn-lg btn-info" OnClientClick="return loginCheck()" OnClick="signIn_Click" />
+                        <td colspan="3">
+                            <asp:Label ID="lblPwd" runat="server" Text="비밀번호 찾기"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <asp:Label ID="lblPwd" runat="server" Text="PWD : "></asp:Label>
+                            <asp:Label ID="idUserName" runat="server" Text="이름 : "></asp:Label>
                         </td>
                         <td>
-                            <asp:TextBox ID="pwd" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                            <asp:TextBox ID="userName" runat="server"></asp:TextBox>
+                        </td>
+                        <td rowspan="2">
+                            <asp:Button ID="findId" runat="server" Text="ID찾기" OnClick="findId_Click" CssClass="btn"/>
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+                            <asp:Label ID="pwdId" runat="server" Text="ID : "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="id" runat="server"></asp:TextBox>
+                        </td>
+                        <td rowspan="2">
+                            <asp:Button ID="findPwd" runat="server" Text="비밀번호찾기" OnClick="findPwd_Click" CssClass="btn"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="idEmail" runat="server" Text="email : "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="userEmail" runat="server"></asp:TextBox>
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+                            <asp:Label ID="pwdPhoneNum" runat="server" Text="phone : "></asp:Label>
+                        </td>
+                        <td>
+                            <asp:TextBox ID="phoneNum" runat="server"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr style="text-align: center">
+                        <td colspan="7">
+                            <asp:Label ID="idPwdResult" runat="server" Text="정보를 입력해주세요"></asp:Label>
                         </td>
                     </tr>
                     <tr>
                         <td colspan="3">
-                            <asp:LinkButton ID="signUp" runat="server" PostBackUrl="~/FrmSignUpPage.aspx">Sign Up</asp:LinkButton>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            <asp:LinkButton ID="findIdPwd" runat="server" PostBackUrl="~/FrmFindPage.aspx">Find Id / PWD</asp:LinkButton>
+
                         </td>
-                    </tr>
-                    <tr style="text-align: center">
-                        <td colspan="2">
-                            <asp:Label ID="resultMessage" runat="server" Text=""></asp:Label>
+                        <td>
+                            <asp:Button ID="Button1" runat="server" Text="로그인화면으로" PostBackUrl="~/FrmSignInPage.aspx"/>
+                        </td>
+                        <td colspan="3">
+
                         </td>
                     </tr>
                 </table>
             </div>
-
         </main>
         <footer style="background-color: #CCCCCC; float:left; width:100%; bottom: 0%; position: absolute">
             <p style="text-align: center">안녕하세요</p>
