@@ -14,6 +14,11 @@ namespace HKHNoticeBoard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user"] == null)
+            {
+                Response.Redirect("~/FrmSignInPage.aspx");
+            }
+
             if (!IsPostBack)
             {
                 string writeId = Request.QueryString["wid"].ToString();

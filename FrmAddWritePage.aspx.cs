@@ -15,6 +15,11 @@ namespace HKHNoticeBoard
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(Session["user"] == null)
+            {
+                Response.Redirect("~/FrmSignInPage.aspx");
+            }
+
             Member mem = (Member)Session["user"];
             userName.Text = mem.getUserName();
             defaultSetting();

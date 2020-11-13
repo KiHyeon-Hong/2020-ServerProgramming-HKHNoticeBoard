@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
@@ -99,6 +101,8 @@ namespace HKHNoticeBoard
                         $"</td>" +
                         $"<td style=\"text-align: center\">" +
                             $"{item["body"].ToString()}" +
+                            "&nbsp;&nbsp;&nbsp;&nbsp;" +
+                            $"<a href='FrmDetailPage.aspx?wid={item["writeId"].ToString()}&del=true'>x</a>" +
                         $"</td>" +
                     $"</tr>";
             }
@@ -202,7 +206,69 @@ namespace HKHNoticeBoard
             cmd.ExecuteNonQuery();
             conn.Close();
 
+            conn.Open();
+            string selectSql = "select * from Member, Write where Member.userId = Write.userId and writeId = @writeId";
+            cmd = new SqlCommand(selectSql, conn);
+
+            cmd.Parameters.AddWithValue("@writeId", Request.QueryString["wid"].ToString());
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            da.Fill(ds, "Board");
+
+            //foreach (DataRow item in ds.Tables["Board"].Rows)
+                //if(int.Parse($"{item["alarm"].ToString()}") == 1)
+                    //sendMessage($"{item["phoneNum"].ToString()}");
+
+            conn.Close();
+
             Response.Redirect("~/FrmDetailPage.aspx?wid=" + Request.QueryString["wid"].ToString());
+        }
+
+        private void sendMessage(string number)
+        {
+            string jsonStr = "{'text':'새로운 댓글이 올라왔습니다.', 'number':'" + number + "'}";
+            HttpUtility.JavaScriptStringEncode(jsonStr);
+
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("https://tztc6qlz5a.execute-api.us-east-1.amazonaws.com/default/lambda_for_sns");
+            httpWebRequest.ContentType = "application/json; charset=utf-8";
+            httpWebRequest.Method = "POST";
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                streamWriter.Write(jsonStr);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+            string result = "";
+            try
+            {
+                using (var response = httpWebRequest.GetResponse() as HttpWebResponse)
+                {
+                    if (httpWebRequest.HaveResponse && response != null)
+                    {
+                        using (var reader = new StreamReader(response.GetResponseStream()))
+                        {
+
+                        }
+                    }
+                }
+
+            }
+            catch (WebException ex)
+            {
+                if (ex.Response != null)
+                {
+                    using (var errorResponse = (HttpWebResponse)ex.Response)
+                    {
+                        using (var reader = new StreamReader(errorResponse.GetResponseStream()))
+                        {
+                            string error = reader.ReadToEnd();
+                            result = error;
+                        }
+                    }
+                }
+            }
         }
     }
 }

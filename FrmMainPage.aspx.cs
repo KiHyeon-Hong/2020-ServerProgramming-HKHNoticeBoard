@@ -112,6 +112,7 @@ namespace HKHNoticeBoard
                             (($"{item["category"].ToString()}" == "1")? "[공지사항]": ($"{item["category"].ToString()}" == "2")? "[Q&A]": "[FAQ]") +
                         $"</td>" +
                         $"<td>" +
+                            "[  <img src=\"files/" + $"{item["emailAtt"].ToString()}" + "\" height=\"25px\" width=\"25px\">  ] " +
                             //$"{item["title"].ToString()}" +
                             $"<a href='FrmDetailPage.aspx?wid={item["writeId"].ToString()}'>{item["title"].ToString()}</a>" +
                         $"</td>" +
