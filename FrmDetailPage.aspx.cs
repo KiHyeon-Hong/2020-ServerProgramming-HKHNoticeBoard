@@ -20,8 +20,12 @@ namespace HKHNoticeBoard
             {
                 Response.Redirect("~/FrmMainPage.aspx");
             }
-            
-            
+
+            string tempMem = "";
+            if(Session["user"] != null)
+                tempMem = ((Member)Session["user"]).getUserName();
+
+
             int myViewCount = 0;
 
             string writeId = Request.QueryString["wid"].ToString();
@@ -107,8 +111,10 @@ namespace HKHNoticeBoard
                         $"</td>" +
                         $"<td style=\"text-align: center\">" +
                             $"{item["body"].ToString()}" +
-                            "&nbsp;&nbsp;&nbsp;&nbsp;" +
-                            $"<a href='FrmDetailPage.aspx?wid={item["writeId"].ToString()}&del=true'>x</a>" +
+                            "&nbsp;&nbsp;&nbsp;&nbsp;";
+                if(tempMem == item["userName"].ToString())
+                    myBoard += $"<a href='FrmDeleteComment.aspx?wid={item["writeId"].ToString()}&delete={item["commentId"].ToString()}'>x</a>";
+                myBoard +=
                         $"</td>" +
                     $"</tr>";
             }
