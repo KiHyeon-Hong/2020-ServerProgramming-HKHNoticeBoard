@@ -229,9 +229,9 @@ namespace HKHNoticeBoard
 
             da.Fill(ds, "Board");
 
-            //foreach (DataRow item in ds.Tables["Board"].Rows)
-                //if(int.Parse($"{item["alarm"].ToString()}") == 1)
-                    //sendMessage($"{item["phoneNum"].ToString()}");
+            foreach (DataRow item in ds.Tables["Board"].Rows)
+                if(int.Parse($"{item["alarm"].ToString()}") == 1)
+                    sendMessage($"{item["phoneNum"].ToString()}");
 
             conn.Close();
 
