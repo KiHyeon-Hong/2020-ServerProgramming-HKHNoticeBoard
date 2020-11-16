@@ -45,43 +45,51 @@ namespace HKHNoticeBoard
 
             Write write = new Write(0, int.Parse(category.SelectedValue), title.Text, body.Text, DateTime.Now, DateTime.Now, emailAtt.FileName, mem.getUserId(), 0);
 
-            SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
-            conn.Open();
+            try
+            {
+                SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+                conn.Open();
 
-            string insertSql = "insert into Write(title, category, body, createDay, updateDay, emailAtt, userId) values(@title, @category, @body, @createDay, @updateDay, @emailAtt, @userId)";
-            SqlCommand cmd = new SqlCommand(insertSql, conn);
+                string insertSql = "insert into Write(title, category, body, createDay, updateDay, emailAtt, userId) values(@title, @category, @body, @createDay, @updateDay, @emailAtt, @userId)";
+                SqlCommand cmd = new SqlCommand(insertSql, conn);
 
-            cmd.Parameters.AddWithValue("@title", write.getTitle());
-            cmd.Parameters.AddWithValue("@category", write.getCategory());
-            cmd.Parameters.AddWithValue("@body", write.getBody());
-            cmd.Parameters.AddWithValue("@createDay", write.getCreateDay());
-            cmd.Parameters.AddWithValue("@updateDay", write.getUpdateDay());
-            cmd.Parameters.AddWithValue("@emailAtt", write.getEmailAtt());
-            cmd.Parameters.AddWithValue("@userId", write.getUserId());
+                cmd.Parameters.AddWithValue("@title", write.getTitle());
+                cmd.Parameters.AddWithValue("@category", write.getCategory());
+                cmd.Parameters.AddWithValue("@body", write.getBody());
+                cmd.Parameters.AddWithValue("@createDay", write.getCreateDay());
+                cmd.Parameters.AddWithValue("@updateDay", write.getUpdateDay());
+                cmd.Parameters.AddWithValue("@emailAtt", write.getEmailAtt());
+                cmd.Parameters.AddWithValue("@userId", write.getUserId());
 
-            cmd.ExecuteNonQuery();
-            conn.Close();
+                cmd.ExecuteNonQuery();
+                conn.Close();
 
-            string fileName = Server.MapPath("/files") + @"/" + emailAtt.FileName;
-            emailAtt.SaveAs(fileName);
-
-
+                string fileName = Server.MapPath("/files") + @"/" + emailAtt.FileName;
+                emailAtt.SaveAs(fileName);
 
 
-            conn.Open();
-            string selectSql = "select * from Member where alarm=1";
-            cmd = new SqlCommand(selectSql, conn);
 
-            DataSet ds = new DataSet();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-            da.Fill(ds, "Board");
+                conn.Open();
+                string selectSql = "select * from Member where alarm=1";
+                cmd = new SqlCommand(selectSql, conn);
 
-            //foreach (DataRow item in ds.Tables["Board"].Rows)
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+                da.Fill(ds, "Board");
+
+                //foreach (DataRow item in ds.Tables["Board"].Rows)
                 //if(int.Parse($"{item["alarm"].ToString()}") == 1)
-                    //sendMessage($"{item["phoneNum"].ToString()}");
+                //sendMessage($"{item["phoneNum"].ToString()}");
 
-            conn.Close();
+                conn.Close();
+            }
+            catch(Exception ex)
+            {
+                Response.Redirect("Frm404NotFound.aspx");
+            }
+            
 
             Response.Redirect("~/FrmMainPage.aspx");
         }
