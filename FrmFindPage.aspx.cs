@@ -46,6 +46,7 @@ namespace HKHNoticeBoard
             }
 
             conn.Close();
+
         }
 
         protected void findPwd_Click(object sender, EventArgs e)
@@ -77,6 +78,7 @@ namespace HKHNoticeBoard
             }
 
             conn.Close();
+
         }
     }
 }

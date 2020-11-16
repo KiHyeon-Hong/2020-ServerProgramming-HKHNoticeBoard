@@ -51,12 +51,13 @@ namespace HKHNoticeBoard
                 }
             }
 
-            if(check == 0)
+            if (check == 0)
             {
                 resultMessage.Text = "<font color='red'>정보가 없습니다.</font>";
             }
 
             conn.Close();
+
         }
     }
 }

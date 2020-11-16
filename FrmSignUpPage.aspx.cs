@@ -30,7 +30,6 @@ namespace HKHNoticeBoard
         protected void signUp_Click(object sender, EventArgs e)
         {
             Member mem = new Member(0, id.Text, pwd.Text, userName.Text, userEmail.Text, int.Parse(birthYear.Text), int.Parse(birthMon.Text), int.Parse(birthDay.Text), phoneNum.Text, int.Parse(alarm.SelectedValue), userProfile.FileName);
-
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             conn.Open();
 
@@ -56,37 +55,46 @@ namespace HKHNoticeBoard
             userProfile.SaveAs(fileName);
 
             Response.Redirect("~/FrmSignInPage.aspx");
+
         }
 
         protected void check_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
-            conn.Open();
-
-            string selectSql = "select * from Member";
-            SqlCommand cmd = new SqlCommand(selectSql, conn);
-
-            DataSet ds = new DataSet();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(ds, "member");
-
-            int check = 0;
-
-            foreach (DataRow item in ds.Tables["member"].Rows)
+            try
             {
-                if ((item["id"].ToString() == id.Text))
+                SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
+                conn.Open();
+
+                string selectSql = "select * from Member";
+                SqlCommand cmd = new SqlCommand(selectSql, conn);
+
+                DataSet ds = new DataSet();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds, "member");
+
+                int check = 0;
+
+                foreach (DataRow item in ds.Tables["member"].Rows)
                 {
-                    check = 1;
-                    checkResult.Text = "ID가 중복됩니다";
+                    if ((item["id"].ToString() == id.Text))
+                    {
+                        check = 1;
+                        checkResult.Text = "ID가 중복됩니다";
+                    }
                 }
-            }
 
-            if (check == 0)
+                if (check == 0)
+                {
+                    checkResult.Text = "ID가 중복되지 않습니다";
+                }
+
+                conn.Close();
+            }
+            catch (Exception ex)
             {
-                checkResult.Text = "ID가 중복되지 않습니다";
+                Response.Redirect("Frm404NotFound.aspx?err=" + ex.Message);
             }
-
-            conn.Close();
+            
         }
     }
 }

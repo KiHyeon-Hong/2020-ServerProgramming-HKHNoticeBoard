@@ -46,7 +46,7 @@ namespace HKHNoticeBoard
 
             foreach (DataRow item in ds.Tables["Board"].Rows)
             {
-                
+
                 if (((Member)Session["user"] == null) || ($"{item["userName"].ToString()}" != ((Member)Session["user"]).getUserName()))
                 {
                     updateWrite.Visible = false;
@@ -112,7 +112,7 @@ namespace HKHNoticeBoard
                         $"<td style=\"text-align: center\">" +
                             $"{item["body"].ToString()}" +
                             "&nbsp;&nbsp;&nbsp;&nbsp;";
-                if(tempMem == item["userName"].ToString())
+                if (tempMem == item["userName"].ToString())
                     myBoard += $"<a href='FrmDeleteComment.aspx?wid={item["writeId"].ToString()}&delete={item["commentId"].ToString()}'>x</a>";
                 myBoard +=
                         $"</td>" +
@@ -125,13 +125,12 @@ namespace HKHNoticeBoard
             defaultSetting();
 
             conn.Close();
+
+
         }
 
         private string viewCountControl(int myViewCount)
         {
-
-
-
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             conn.Open();
 
@@ -193,6 +192,7 @@ namespace HKHNoticeBoard
             cmd.ExecuteNonQuery();
             conn.Close();
 
+
             Response.Redirect("~/FrmMainPage.aspx");
         }
 
@@ -202,7 +202,6 @@ namespace HKHNoticeBoard
             int userId = mem.getUserId();
 
             Comment comm = new Comment(0, int.Parse(Request.QueryString["wid"].ToString()), mem.getUserId(), comment.Text);
-
 
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             conn.Open();
@@ -230,12 +229,13 @@ namespace HKHNoticeBoard
             da.Fill(ds, "Board");
 
             foreach (DataRow item in ds.Tables["Board"].Rows)
-                if(int.Parse($"{item["alarm"].ToString()}") == 1)
+                if (int.Parse($"{item["alarm"].ToString()}") == 1)
                     sendMessage($"{item["phoneNum"].ToString()}");
 
             conn.Close();
 
             Response.Redirect("~/FrmDetailPage.aspx?wid=" + Request.QueryString["wid"].ToString());
+
         }
 
         private void sendMessage(string number)

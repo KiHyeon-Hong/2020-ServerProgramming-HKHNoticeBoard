@@ -45,6 +45,7 @@ namespace HKHNoticeBoard
                 }
 
                 conn.Close();
+
             }
             defaultSetting();
         }
@@ -67,7 +68,6 @@ namespace HKHNoticeBoard
             int userId = mem.getUserId();
 
             Write write = new Write(int.Parse(Request.QueryString["wid"].ToString()), int.Parse(category.SelectedValue), title.Text, body.Text, DateTime.Now, DateTime.Now, emailAtt.FileName, mem.getUserId(), 0);
-
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             conn.Open();
 
@@ -87,9 +87,9 @@ namespace HKHNoticeBoard
             string fileName = Server.MapPath("/files") + @"/" + emailAtt.FileName;
             emailAtt.SaveAs(fileName);
 
-            //sendMessage();
 
             Response.Redirect("~/FrmMainPage.aspx");
+
         }
 
         protected void boardList_Click(object sender, EventArgs e)

@@ -56,6 +56,7 @@ namespace HKHNoticeBoard
 
             Member mem = new Member(userId, id2.Text, pwd.Text, userName.Text, userEmail.Text, int.Parse(birthYear.Text), int.Parse(birthMon.Text), int.Parse(birthDay.Text), phoneNum.Text, int.Parse(alarm.SelectedValue), userProfile.FileName);
 
+
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             conn.Open();
 
@@ -82,6 +83,7 @@ namespace HKHNoticeBoard
             userProfile.SaveAs(fileName);
 
             Session["user"] = mem;
+
 
             Response.Redirect("~/FrmMyPage.aspx");
         }
