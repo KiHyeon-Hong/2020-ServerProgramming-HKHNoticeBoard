@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+  FrmSignInPage
+
+  @author 홍기현
+  @version 1.0
+  @사용자 로그인 페이지
+*/
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -23,6 +30,12 @@ namespace HKHNoticeBoard
                 resultMessage.Text = "<font color='red'>" + Request.QueryString["msg"] + "</font>";
         }
 
+        /*
+            로그인 메소드
+            @param object sender
+            @param EventArgs e
+            @return 없음
+        */
         protected void signIn_Click(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);

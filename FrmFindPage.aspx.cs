@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+  FrmFindPage
+
+  @author 홍기현
+  @version 1.0
+  @아이디, 비밀번호 찾기 페이지
+*/
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -17,6 +24,12 @@ namespace HKHNoticeBoard
 
         }
 
+        /*
+            아이디 찾기 메소드
+            @param object sender
+            @param EventArgs e
+            @return 없음
+        */
         protected void findId_Click(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
@@ -46,9 +59,14 @@ namespace HKHNoticeBoard
             }
 
             conn.Close();
-
         }
 
+        /*
+            비밀번호 찾기 메소드
+            @param object sender
+            @param EventArgs e
+            @return 없음
+        */
         protected void findPwd_Click(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);

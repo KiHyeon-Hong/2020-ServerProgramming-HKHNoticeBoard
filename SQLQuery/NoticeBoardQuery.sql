@@ -31,6 +31,7 @@ create table Comment (
 	writeId int not null,
 	userId int not null,
 	body nvarchar(256) not null,
+	bestCheck int not null,
 	foreign key(writeId) references Write(writeId),
 	foreign key(userId) references Member(userId)
 );
@@ -67,3 +68,5 @@ select * from Member where userName like '%user%';
 select * from Member, Write where Member.userId = Write.userId and title like '%테스트%' order by writeId desc;
 
 select * from Write where title like N'%테스트%';
+
+update Write set category=1;

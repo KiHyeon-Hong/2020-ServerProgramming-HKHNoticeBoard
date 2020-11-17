@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+  FrmPageInformationPage
+
+  @author 홍기현
+  @version 1.0
+  @페이지에 사용된 기능들 정리 페이지
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

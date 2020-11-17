@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+  FrmMainPage
+
+  @author 홍기현
+  @version 1.0
+  @게시판 프로그램의 메인 페이지
+*/
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -30,11 +37,16 @@ namespace HKHNoticeBoard
             else
                 cate = cate.ToString();
 
-
             defaultPagination(cate, defaultWebSetting(cate, int.Parse(page), 10, searchName, searchValue), 10);
             defaultSetting();
         }
-
+        /*
+            페이지네이션 설정 메소드
+            @param string cate : 사용자가 선택한 카테고리(새질문, 답변중, 답변완료)
+            @param int count : 
+            @param int onePage
+            @return 없음
+        */
         private void defaultPagination(string cate, int count, int onePage)
         {
             myPaginnation.Text = "<nav style=\"text-align: center\">" +
@@ -44,7 +56,6 @@ namespace HKHNoticeBoard
                             "<span aria-hidden=\"true\">&laquo;</span>" +
                         "</a>" +
                     "</li>";
-
 
             for(int i = 0; i < ((count / onePage) + 1); i++)
             {
@@ -58,14 +69,20 @@ namespace HKHNoticeBoard
                     "</li>";
         }
 
+        /*
+            검색 조건에 따라 쿼리 생성 후 게시글을 띄우는 메소드
+            @param string cate : 사용자가 선택한 카테고리(새질문, 답변중, 답변완료)
+            @param int page : 페이지네이션으로 선택한 페이지 번호
+            @param int onePage : 한 페이지에 들어가는 게시글 수
+            @param string searchName : 사용자가 검색 조건(제목, 내용, 작성자)
+            @param string searchValue : 사용자의 검색 단어
+            @return int count : 게시글 개수
+        */
         private int defaultWebSetting(string cate, int page, int onePage, string searchName, string searchValue)
         {
-
-
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             conn.Open();
 
-            //string selectSql = "select * from Member, Write where Member.userId = Write.userId";
             string selectSql;
             if (searchName != null)
             {
@@ -86,7 +103,6 @@ namespace HKHNoticeBoard
             DataSet ds = new DataSet();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-            //Fill로 채운다
             da.Fill(ds, "BoardList");
 
             string myBoard =
@@ -113,24 +129,20 @@ namespace HKHNoticeBoard
 
             foreach (DataRow item in ds.Tables["BoardList"].Rows)
             {
-
                 if((count >= (page -1) * onePage) && (count < (page) * onePage))
                 {
                     myBoard +=
                     $"<tr>" +
                         $"<td style=\"text-align: center\">" +
-                            (($"{item["category"].ToString()}" == "1")? "[공지사항]": ($"{item["category"].ToString()}" == "2")? "[Q&A]": "[FAQ]") +
+                            (($"{item["category"].ToString()}" == "1")? "[새질문]": ($"{item["category"].ToString()}" == "2")? "[답변등록중]": "[답변완료]") +
                         $"</td>" +
                         $"<td>" +
                             "[  <img src=\"files/" + $"{item["emailAtt"].ToString()}" + "\" height=\"25px\" width=\"25px\">  ] " +
-                            //$"{item["title"].ToString()}" +
                             $"<a href='FrmDetailPage.aspx?wid={item["writeId"].ToString()}'>{item["title"].ToString()}</a>" +
                         $"</td>" +
                         $"<td style=\"text-align: center\">" +
                             "<img src=\"userProfiles/" + item["userProfile"] + "\" height=\"25px\" width=\"25px\">" +
                             $"{item["userName"].ToString()}" +
-                        //"<asp:TextBox ID=\"test\" runat=\"server\"></asp:TextBox>" +
-                        //"<a href='www.naver.com'>test</a>" +
                         $"</td>" +
                         $"<td style=\"text-align: center\">" +
                             $"{item["createDay"].ToString().Split(' ')[0]}" +
@@ -145,7 +157,6 @@ namespace HKHNoticeBoard
             }
 
             myBoard += "</table>";
-
             board.Text = myBoard;
 
             conn.Close();
@@ -165,11 +176,23 @@ namespace HKHNoticeBoard
             }
         }
 
+        /*
+            질문글 추가 페이지로 이동 메소드
+            @param object sender
+            @param EventArgs e
+            @return 없음
+        */
         protected void addWrite_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/FrmAddWritePage.aspx");
         }
 
+        /*
+            검색버튼 클릭 메소드
+            @param object sender
+            @param EventArgs e
+            @return 없음
+        */
         protected void search_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/FrmMainPage.aspx?category=0&searchName=" + searchCriteria.SelectedValue + "&searchValue=" + searchText.Text);

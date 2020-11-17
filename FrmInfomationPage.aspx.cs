@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+  FrmInfomationPage
+
+  @author 홍기현
+  @version 1.0
+  @게시판 페이지 작성한 프로그래머의 자기 자랑 페이지
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+  FrmSignUpPage
+
+  @author 홍기현
+  @version 1.0
+  @로그인한 사용자가 새롭게 질문을 추가하는 페이지
+*/
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -27,6 +34,12 @@ namespace HKHNoticeBoard
             }
         }
 
+        /*
+            회원가입 요청 메소드
+            @param object sender
+            @param EventArgs e
+            @return 없음
+        */
         protected void signUp_Click(object sender, EventArgs e)
         {
             Member mem = new Member(0, id.Text, pwd.Text, userName.Text, userEmail.Text, int.Parse(birthYear.Text), int.Parse(birthMon.Text), int.Parse(birthDay.Text), phoneNum.Text, int.Parse(alarm.SelectedValue), userProfile.FileName);
@@ -47,7 +60,6 @@ namespace HKHNoticeBoard
             cmd.Parameters.AddWithValue("@alarm", mem.getAlarm());
             cmd.Parameters.AddWithValue("@userProfile", mem.getUserProfile());
 
-
             cmd.ExecuteNonQuery();
             conn.Close();
 
@@ -58,6 +70,12 @@ namespace HKHNoticeBoard
 
         }
 
+        /*
+            아이디 중복 확인 요청 메소드
+            @param object sender
+            @param EventArgs e
+            @return 없음
+        */
         protected void check_Click(object sender, EventArgs e)
         {
             try

@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+  FrmInfoUpdatePage
+
+  @author 홍기현
+  @version 1.0
+  @회원 정보 변경 페이지
+*/
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -49,13 +56,18 @@ namespace HKHNoticeBoard
             }
         }
 
+        /*
+           사용자 정보 변경 메소드
+           @param object sender
+           @param EventArgs e
+           @return 없움
+       */
         protected void infoUpdate_Click(object sender, EventArgs e)
         {
             Member temp = (Member)Session["user"];
             int userId = temp.getUserId();
 
             Member mem = new Member(userId, id2.Text, pwd.Text, userName.Text, userEmail.Text, int.Parse(birthYear.Text), int.Parse(birthMon.Text), int.Parse(birthDay.Text), phoneNum.Text, int.Parse(alarm.SelectedValue), userProfile.FileName);
-
 
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             conn.Open();
@@ -75,7 +87,6 @@ namespace HKHNoticeBoard
             cmd.Parameters.AddWithValue("@alarm", mem.getAlarm());
             cmd.Parameters.AddWithValue("@userProfile", mem.getUserProfile());
 
-
             cmd.ExecuteNonQuery();
             conn.Close();
 
@@ -83,7 +94,6 @@ namespace HKHNoticeBoard
             userProfile.SaveAs(fileName);
 
             Session["user"] = mem;
-
 
             Response.Redirect("~/FrmMyPage.aspx");
         }

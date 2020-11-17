@@ -6,13 +6,15 @@
         private int writeId;
         private int userId;
         private string body;
+        private int bestCheck;
 
-        public Comment(int commentId, int writeId, int userId, string body)
+        public Comment(int commentId, int writeId, int userId, string body, int bestCheck)
         {
             this.commentId = commentId;
             this.writeId = writeId;
             this.userId = userId;
             this.body = body;
+            this.bestCheck = bestCheck;
         }
 
         public int getCommentId()
@@ -46,6 +48,14 @@
         public void setBody(string body)
         {
             this.body = body;
+        }
+        public void setBestCheck(int bestCheck)
+        {
+            this.bestCheck = bestCheck;
+        }
+        public int getBestCheck()
+        {
+            return bestCheck;
         }
     }
 }

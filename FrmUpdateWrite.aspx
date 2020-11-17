@@ -51,9 +51,9 @@
             &nbsp;<asp:ImageButton ID="myLogo" runat="server" ImageUrl="~/PageImages/logo.png" PostBackUrl="FrmMainPAge.aspx"  Height="50px" Width="150px" />
             <span style="top: 4%; right: 35%; position: absolute">
                 <a href="FrmMainPage.aspx?category=0">전체</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="FrmMainPage.aspx?category=1">공지사항</a>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="FrmMainPage.aspx?category=2">Q&A</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="FrmMainPage.aspx?category=3">FAQ</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="FrmMainPage.aspx?category=1">새질문</a>&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="FrmMainPage.aspx?category=2">답변등록중</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="FrmMainPage.aspx?category=3">답변완료</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="FrmInfomationPage.aspx">자기소개</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="FrmPageInformationPage.aspx">페이지소개</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </span>
@@ -77,18 +77,6 @@
                     </td>
                     <td>
                         <asp:Label ID="userName" runat="server" Text=""></asp:Label>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <asp:Label ID="myCategory" runat="server" Text="카테고리 : "></asp:Label>
-                    </td>
-                    <td>
-                        <asp:DropDownList ID="category" runat="server">
-                            <asp:ListItem Value="1">공지사항</asp:ListItem>
-                            <asp:ListItem Value="2">Q&A</asp:ListItem>
-                            <asp:ListItem Value="3">FAQ</asp:ListItem>
-                        </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
@@ -125,7 +113,7 @@
                     </td>
                 </tr>
             </table>
-
+            <asp:Label ID="myCategory" runat="server" Text="" Visible="false"></asp:Label>
 
         </main>
         <footer>

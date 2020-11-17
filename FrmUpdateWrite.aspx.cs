@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+  FrmUpdateWrite
+
+  @author 홍기현
+  @version 1.0
+  @게시글 작성한 사용자의 게시글 수정 페이지
+*/
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -34,7 +41,6 @@ namespace HKHNoticeBoard
                 DataSet ds = new DataSet();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
 
-                //Fill로 채운다
                 da.Fill(ds, "Board");
 
                 foreach (DataRow item in ds.Tables["Board"].Rows)
@@ -42,6 +48,7 @@ namespace HKHNoticeBoard
                     userName.Text = $"{item["userName"].ToString()}";
                     title.Text = $"{item["title"].ToString()}";
                     body.Text = $"{item["body"].ToString()}";
+                    myCategory.Text = $"{item["category"].ToString()}";
                 }
 
                 conn.Close();
@@ -62,6 +69,12 @@ namespace HKHNoticeBoard
             }
         }
 
+        /*
+            게시글 수정 메소드
+            @param object sender
+            @param EventArgs e
+            @return 없음
+        */
         protected void updateWrite_Click(object sender, EventArgs e)
         {
             string filePath = Request.PhysicalApplicationPath + @"badword\";
@@ -79,11 +92,10 @@ namespace HKHNoticeBoard
                     Response.Redirect("~/FrmSignInPage.aspx?msg=내용에 비속어가 들어갔습니다");
             }
 
-
             Member mem = (Member)Session["user"];
             int userId = mem.getUserId();
 
-            Write write = new Write(int.Parse(Request.QueryString["wid"].ToString()), int.Parse(category.SelectedValue), title.Text, body.Text, DateTime.Now, DateTime.Now, emailAtt.FileName, mem.getUserId(), 0);
+            Write write = new Write(int.Parse(Request.QueryString["wid"].ToString()), int.Parse(myCategory.Text), title.Text, body.Text, DateTime.Now, DateTime.Now, emailAtt.FileName, mem.getUserId(), 0);
             SqlConnection conn = new SqlConnection(WebConfigurationManager.ConnectionStrings["connectionString"].ConnectionString);
             conn.Open();
 
@@ -108,6 +120,12 @@ namespace HKHNoticeBoard
 
         }
 
+        /*
+            메인 화면으로 이동 메소드
+            @param object sender
+            @param EventArgs e
+            @return 없음
+        */
         protected void boardList_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/FrmMainPage.aspx");

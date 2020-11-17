@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+  FrmAMyPage
+
+  @author 홍기현
+  @version 1.0
+  @로그인 사용자 정보 확인 페이지
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -46,6 +53,12 @@ namespace HKHNoticeBoard
             }
         }
 
+        /*
+            사용자 정보 변경으로 이동 메소드
+            @param object sender
+            @param EventArgs e
+            @return 없음
+        */
         protected void infoUpdate_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/FrmInfoUpdatePage.aspx");
