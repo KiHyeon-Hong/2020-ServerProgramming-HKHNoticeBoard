@@ -18,6 +18,9 @@ namespace HKHNoticeBoard
             {
                 Session["user"] = null;
             }
+
+            if(Request.QueryString["msg"] != null)
+                resultMessage.Text = "<font color='red'>" + Request.QueryString["msg"] + "</font>";
         }
 
         protected void signIn_Click(object sender, EventArgs e)

@@ -64,6 +64,22 @@ namespace HKHNoticeBoard
 
         protected void updateWrite_Click(object sender, EventArgs e)
         {
+            string filePath = Request.PhysicalApplicationPath + @"badword\";
+            string fileName1 = "";
+            fileName1 = filePath + "badword.txt";
+
+            string textValue = System.IO.File.ReadAllText(fileName1);
+            string[] badword = textValue.Split(',');
+
+            for (int i = 0; i < badword.Length; i++)
+            {
+                if ((title.Text).Contains(badword[i]))
+                    Response.Redirect("~/FrmSignInPage.aspx?msg=제목에 비속어가 들어갔습니다");
+                else if ((body.Text).Contains(badword[i]))
+                    Response.Redirect("~/FrmSignInPage.aspx?msg=내용에 비속어가 들어갔습니다");
+            }
+
+
             Member mem = (Member)Session["user"];
             int userId = mem.getUserId();
 
