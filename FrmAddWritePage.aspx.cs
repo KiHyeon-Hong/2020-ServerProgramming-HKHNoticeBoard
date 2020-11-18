@@ -114,9 +114,9 @@ namespace HKHNoticeBoard
             /*
                 새로운 질문글이 올라오면 알람 받기 설정 사용자에게 문자 메시지 전송
             */
-            //foreach (DataRow item in ds.Tables["Board"].Rows)
-            //    if(int.Parse($"{item["alarm"].ToString()}") == 1)
-            //        sendMessage($"{item["phoneNum"].ToString()}");
+            foreach (DataRow item in ds.Tables["Board"].Rows)
+                if (int.Parse($"{item["alarm"].ToString()}") == 1)
+                    sendMessage($"{item["phoneNum"].ToString()}");
 
             conn.Close();
 
